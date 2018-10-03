@@ -10,6 +10,9 @@
 # wget https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip
 # unzip ovpn.zip
 # --------------------------------------------------
+#
+# Another thing - this script assumes gnu versions of ls, grep, shuf, etc.
+#
 
 # simple error function
 croak () {
