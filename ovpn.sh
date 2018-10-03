@@ -26,11 +26,13 @@ selected_region=${1:-default}
 
 # --------------------------------------------------
 # sanity check
-[ ! -d $OPENVPN_DIR   ] && croak "Cannot find config dir: $OPENVPN_DIR"          1
-[ ! -d $tcp_configdir ] && croak "Cannot find config dir for TCP openvpn: $tcp_configdir." 1
-[ ! -d $udp_configdir ] && croak "Cannot find config dir for UDP openvpn: $udp_configdir." 1
 
-if [ $selected_region == "default" ] ; then
+
+[[ ! -d $OPENVPN_DIR   ]] && croak "Cannot find config dir: $OPENVPN_DIR"          1
+[[ ! -d $tcp_configdir ]] && croak "Cannot find config dir for TCP openvpn: $tcp_configdir." 1
+[[ ! -d $udp_configdir ]] && croak "Cannot find config dir for UDP openvpn: $udp_configdir." 1
+
+if [[ $selected_region == "default" ]] ; then
   echo "Missing cmdline arg for region (us,se,jp,etc)."
   echo "Defaulting to se."
   selected_region='se'
