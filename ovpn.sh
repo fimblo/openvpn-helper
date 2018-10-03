@@ -1,10 +1,17 @@
 #!/bin/bash
-# readme - intended for use with nordvpn
-# are the openvpn configurations available?
-# are the credentials in place?
-
+# --------------------------------------------------
+# Starts openvpn.
+#
+# I use this with NordVPN, and their openvpn configurations.
+#
+# --------------------------------------------------
+# If you don't have the configurations, do the following:
+# mkdir ~/.openvpn; cd ~/.openvpn
 # wget https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip
+# unzip ovpn.zip
+# --------------------------------------------------
 
+# simple error function
 croak () {
   echo "$1"
   exit ${2:-255}
@@ -44,6 +51,4 @@ config=$(find $tcp_configdir/${selected_region}* | shuf -n 1)
 # --------------------------------------------------
 # start openvpn with that file
 sudo openvpn $config
-
-
 
