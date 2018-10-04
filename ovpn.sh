@@ -1,6 +1,8 @@
 #!/bin/bash
 # --------------------------------------------------
-# Starts openvpn.
+[[ "$DEBUG" ]] && set -x
+# --------------------------------------------------
+# ovpn.sh - Starts openvpn
 #
 # I use this with NordVPN, and their openvpn configurations.
 # Currently it only supports TCP.
@@ -13,6 +15,7 @@
 #
 # Another thing - this script assumes gnu versions of ls, grep, shuf, etc.
 #
+# --------------------------------------------------
 
 # simple error function
 croak () {
