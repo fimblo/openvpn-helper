@@ -3,7 +3,7 @@
 # Starts openvpn.
 #
 # I use this with NordVPN, and their openvpn configurations.
-#
+# Currently it only supports TCP.
 # --------------------------------------------------
 # If you don't have the configurations, do the following:
 # mkdir ~/.openvpn; cd ~/.openvpn
@@ -24,16 +24,13 @@ croak () {
 # HELPER VARS
 OPENVPN_DIR=$HOME/.openvpn
 tcp_configdir=$OPENVPN_DIR/ovpn_tcp
-udp_configdir=$OPENVPN_DIR/ovpn_udp
 selected_region=${1:-default}
 
 # --------------------------------------------------
 # sanity check
 
-
 [[ ! -d $OPENVPN_DIR   ]] && croak "Cannot find config dir: $OPENVPN_DIR"          1
 [[ ! -d $tcp_configdir ]] && croak "Cannot find config dir for TCP openvpn: $tcp_configdir." 1
-[[ ! -d $udp_configdir ]] && croak "Cannot find config dir for UDP openvpn: $udp_configdir." 1
 
 if [[ $selected_region == "default" ]] ; then
   echo "Missing cmdline arg for region (us,se,jp,etc)."
