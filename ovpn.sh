@@ -16,6 +16,14 @@
 # Another thing - this script assumes gnu versions of ls, grep, shuf, etc.
 #
 # --------------------------------------------------
+# ToDos etc
+# - handle tty-less startup nicely
+# - let user see what regions exist if they don't know
+# - usage would be nice
+# - use getopt
+# - option to redirect openvpn output elsewhere, with summary presented in stdout instead
+# --------------------------------------------------
+
 
 # simple error function
 croak () {
