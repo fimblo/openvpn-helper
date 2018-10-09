@@ -58,7 +58,7 @@ region_check () {
 
 # simple error function
 croak () {
-  echo "$1"
+  echo -e "$1"
   exit ${2:-255}
 }
 
@@ -87,7 +87,7 @@ fi
 
 # check if region exists, exit if not
 if ! region_check $selected_region ; then
-  croak "Illegal region: $selected_region" 2
+  croak "Illegal region: $selected_region\nTry the -l param to list regions" 2
 fi
 
 # --------------------------------------------------
