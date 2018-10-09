@@ -26,8 +26,7 @@
 
 # --------------------------------------------------
 # Some variables
-OPENVPN_DIR=$HOME/.openvpn
-configdir=$OPENVPN_DIR/ovpn_tcp
+configdir=$HOME/.openvpn/ovpn_tcp
 selected_region='default'
 
 
@@ -49,17 +48,17 @@ croak () {
 # --------------------------------------------------
 # Catch all CLI options
 
-while getopts 'h' tag ; do
+while getopts 'hr:' tag ; do
   case $tag in
     h) usage; exit 0                          ;;
+    r) selected_region="$OPTARG"              ;;
     \?) usage "Invalid cmdline parm."; exit 1 ;;
   esac
 done
 
-[[ ! -d $OPENVPN_DIR ]] && croak "Can't find config dir: $OPENVPN_DIR"        1
 [[ ! -d $configdir   ]] && croak "Can't find openvpn config dir: $configdir." 1
 
-
+# select which region to select the openvpn server from
 if [[ $selected_region == "default" ]] ; then
   echo "Missing cmdline arg for region (us,se,jp,etc)."
   echo "Hit [enter] to default to se. Ctrl-c to abort."
@@ -67,8 +66,6 @@ if [[ $selected_region == "default" ]] ; then
   selected_region='se'
 fi
 
-
-# --------------------------------------------------
 # check if region exists, exit if not
 tmpfile=$(mktemp) ; trap 'rm -f $tmpfile' 0
 ls -1 $configdir | cut -c-2 | sort -u > $tmpfile
