@@ -37,7 +37,8 @@ selected_region=${1:-default}
 
 if [[ $selected_region == "default" ]] ; then
   echo "Missing cmdline arg for region (us,se,jp,etc)."
-  echo "Defaulting to se."
+  echo "Hit [enter] to default to se. Ctrl-c to abort."
+  read check_for_permission
   selected_region='se'
 fi
 
