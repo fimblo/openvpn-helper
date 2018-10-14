@@ -93,6 +93,5 @@ config=$(find $configdir/${selected_region}* | shuf -n 1)
 
 # --------------------------------------------------
 # start openvpn with that file
-sudo openvpn $config
-
+ sudo openvpn --writepid /var/run/ovpn.pid  --config $config
 
